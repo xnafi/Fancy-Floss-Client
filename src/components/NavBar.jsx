@@ -30,32 +30,42 @@ const NavBar = () => {
                     </li>
                     <li>
                         <Link
-                            to='/shop'
-                            aria-label='Shop'
-                            title='Shop'
-                            className='font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400'
-                        >
-                            Shop
-                        </Link>
-                    </li>
-                    <li>
-                        <Link
-                            to='/cart'
-                            aria-label='Cart'
-                            title='Cart'
-                            className='font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400'
-                        >
-                            <p> Cart</p>
-                        </Link>
-                    </li>
-                    <li>
-                        <Link
                             to='/about'
-                            aria-label='About Us'
-                            title='About Us'
+                            aria-label='About'
+                            title='About'
                             className='font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400'
                         >
-                            About Us
+                            About
+                        </Link>
+                    </li>
+                    <li>
+                        <Link
+                            to='/ervices'
+                            aria-label='Services'
+                            title='Services'
+                            className='font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400'
+                        >
+                            Services
+                        </Link>
+                    </li>
+                    <li>
+                        <Link
+                            to='/faq'
+                            aria-label='FAQ'
+                            title='FAQ'
+                            className='font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400'
+                        >
+                            FAQ
+                        </Link>
+                    </li>
+                    <li>
+                        <Link
+                            to='/contact'
+                            aria-label='Contact Us'
+                            title='Contact Us'
+                            className='font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400'
+                        >
+                            Contact Us
                         </Link>
                     </li>
                 </ul>
@@ -118,32 +128,32 @@ const NavBar = () => {
                                     <ul className='space-y-4'>
                                         <li>
                                             <Link
-                                                to='/shop'
-                                                aria-label='Shop'
-                                                title='Shop'
-                                                className='font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400'
-                                            >
-                                                Shop
-                                            </Link>
-                                        </li>
-                                        <li>
-                                            <Link
-                                                to='/cart'
-                                                aria-label='Cart'
-                                                title='Cart'
-                                                className='font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400'
-                                            >
-                                                <p> Cart</p>
-                                            </Link>
-                                        </li>
-                                        <li>
-                                            <Link
                                                 to='/about'
-                                                aria-label='About Us'
-                                                title='About Us'
+                                                aria-label='About'
+                                                title='About'
                                                 className='font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400'
                                             >
-                                                About Us
+                                                About
+                                            </Link>
+                                        </li>
+                                        <li>
+                                            <Link
+                                                to='/ervices'
+                                                aria-label='Services'
+                                                title='Services'
+                                                className='font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400'
+                                            >
+                                                <p> Services</p>
+                                            </Link>
+                                        </li>
+                                        <li>
+                                            <Link
+                                                to='/contact'
+                                                aria-label='Contact Us'
+                                                title='Contact Us'
+                                                className='font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400'
+                                            >
+                                                Contact Us
                                             </Link>
                                         </li>
                                     </ul>
