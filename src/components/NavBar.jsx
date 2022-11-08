@@ -40,7 +40,7 @@ const NavBar = () => {
                     </li>
                     <li>
                         <Link
-                            to='/ervices'
+                            to='/services'
                             aria-label='Services'
                             title='Services'
                             className='font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400'
@@ -98,8 +98,8 @@ const NavBar = () => {
                                     <div>
                                         <Link
                                             to='/'
-                                            aria-label='Smart Home'
-                                            title='Smart Home'
+                                            aria-label=''
+                                            title=''
                                             className='inline-flex items-center '
                                         >
                                             <img src={logo} className='w-10' alt="" />
@@ -138,7 +138,7 @@ const NavBar = () => {
                                         </li>
                                         <li>
                                             <Link
-                                                to='/ervices'
+                                                to='/services'
                                                 aria-label='Services'
                                                 title='Services'
                                                 className='font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400'

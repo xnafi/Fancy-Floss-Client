@@ -5,7 +5,7 @@ const Banner = () => {
     return (
         <div className="flex flex-col justify-center mx-auto sm:py-12 lg:py-24 lg:flex-row lg:justify-between bg-[#15269C] px-10 text-white">
             <div className="flex flex-col justify-center text-center rounded-sm lg:max-w-md xl:max-w-lg lg:text-left">
-                <h1 className="text-5xl font-bold leading-none sm:text-6xl">Come to dentus and solve your teeth problem
+                <h1 className="text-5xl font-bold leading-none sm:text-5xl uppercase">Come to Fancy Floss and solve your teeth problem
                 </h1><br className="hidden md:inline lg:hidden" />
                 <p className="mt-6 mb-8 text-lg sm:mb-12">It is so important to brush your teeth, take care of your oral health, and thank your dental hygienist. A smile is your unique accessory and pearly white teeth make it even more beautiful
                 </p>

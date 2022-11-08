@@ -14,7 +14,11 @@ export const routes = createBrowserRouter([
         errorElement: <ErrorPage />,
         children: [
             {
-                path: '/',
+                index : true,
+                element: <Home />
+            },
+            {
+                path : '/home',
                 element: <Home />
             },
             {
@@ -23,7 +27,8 @@ export const routes = createBrowserRouter([
             },
             {
                 path: '/services',
-                element: <Services />
+                element: <Services />,
+                loader : ()=> fetch('http://localhost:5000/services')
             },
             {
                 path: '/contact',
