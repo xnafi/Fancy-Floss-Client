@@ -21,7 +21,7 @@ const ServicesHome = () => {
                     {
                         service.slice(0, 3).map(data =>
 
-                            <article key={data._id} className="flex flex-col dark:bg-gray-900 bg-slate-500 text-white rounded-lg p-3">
+                            <article key={data._id} className="flex flex-col dark:bg-gray-900 bg-slate-400 text-white rounded-lg p-3">
                                 <a rel="noopener noreferrer" href="#" aria-label="Te nulla oportere reprimique his dolorum">
                                     <img alt="" className="object-cover w-full h-52 dark:bg-gray-500" src={data.image} />
                                 </a>

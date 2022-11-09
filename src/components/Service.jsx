@@ -7,7 +7,7 @@ const Service = () => {
 
     return (
         <div className='md:px-10 px-2'>
-            <div className="p-4 shadow-md dark:bg-gray-900 dark:text-gray-100 w-auto bg-gray-400 text-white rounded-lg">
+            <div className="p-4 shadow-md dark:bg-gray-900 dark:text-gray-100 w-auto bg-gray-400 text-white rounded-lg my-10">
                 <div className="flex justify-between pb-4 border-bottom">
                     <div className="flex items-center">
                         <a rel="noopener noreferrer" href="#" className="mb-0 capitalize dark:text-gray-100">Photography</a>
@@ -16,7 +16,7 @@ const Service = () => {
                 </div>
                 <div className="space-y-4">
                     <div className="space-y-2">
-                        <img src={image_1} alt="" className="block object-cover object-center w-full rounded-md h-72 dark:bg-gray-500" />
+                        <img src={image_1} alt="" className="block object-cover object-center w-full rounded-md h-72 dark:bg-gray-400" />
                     </div>
                     <div className="space-y-2">
                         <a rel="noopener noreferrer" href="#" className="block">
