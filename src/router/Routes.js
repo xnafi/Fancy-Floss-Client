@@ -5,6 +5,7 @@ import ErrorPage from '../components/EroorPage'
 import Faq from '../components/Faq'
 import Home from '../components/Home'
 import Login from '../components/Login'
+import Service from '../components/Service'
 import Services from '../components/Services'
 import SignUp from '../components/SignUp'
 import Main from '../main/Main'
@@ -47,6 +48,12 @@ export const routes = createBrowserRouter([
             {
                 path: '/signup',
                 element: <SignUp/>
+            }
+            ,
+            {
+                path: '/service/:id',
+                element: <Service/>,
+                loader : ({params})=> fetch(`http://localhost:5000/service/${params.id}`)
             }
         ]
     }

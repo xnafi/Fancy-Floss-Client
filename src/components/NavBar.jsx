@@ -128,6 +128,16 @@ const NavBar = () => {
                                     <ul className='space-y-4'>
                                         <li>
                                             <Link
+                                                to='/home'
+                                                aria-label='Home'
+                                                title='Home'
+                                                className='font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400'
+                                            >
+                                                Home
+                                            </Link>
+                                        </li>
+                                        <li>
+                                            <Link
                                                 to='/about'
                                                 aria-label='About'
                                                 title='About'
@@ -143,7 +153,17 @@ const NavBar = () => {
                                                 title='Services'
                                                 className='font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400'
                                             >
-                                                <p> Services</p>
+                                                Services
+                                            </Link>
+                                        </li>
+                                        <li>
+                                            <Link
+                                                to='/faq'
+                                                aria-label='FAQ'
+                                                title='FAQ'
+                                                className='font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400'
+                                            >
+                                                FAQ
                                             </Link>
                                         </li>
                                         <li>
