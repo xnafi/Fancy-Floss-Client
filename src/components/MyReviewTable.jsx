@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { FaPenAlt, FaTrashAlt } from 'react-icons/fa'
 
-const MyReviewTable = ({ comment, index, handleDelete, setChange
+const MyReviewTable = ({ comment, index, handleDelete, setChange, setClose
 }) => {
-    const [service, setService] = useState(null)
+    const [service, setService] = useState([])
 
 
     const { textarea, servicesId, _id } = comment
@@ -15,15 +15,21 @@ const MyReviewTable = ({ comment, index, handleDelete, setChange
             })
     }, [])
 
+
     return (
-        <tr>
-            <th>{index + 1}</th>
-            <td>{service?.name}</td>
-            <td>{textarea}</td>
+        <>
+            <tr>
 
-            <td className='flex gap-x-4'><button onClick={() => handleDelete(_id)}><FaTrashAlt /></button> <label htmlFor="my-modal-3" className="" onClick={() => setChange(comment)} ><FaPenAlt className=' text-xl cursor-pointer text-info' /></label> </td>
+                <th>{index + 1}</th>
+                <td>{service?.name}</td>
+                <td>{textarea}</td>
 
-        </tr>
+                <td className='flex gap-x-4'><button onClick={() => handleDelete(_id)}><FaTrashAlt /></button> <label htmlFor="my-modal-3" className="" onClick={() => setChange(comment)} ><FaPenAlt onClick={() => setClose(true)} className='cursor-pointer text-info' /></label> </td>
+
+            </tr>
+          
+        </>
+
     )
 }
 

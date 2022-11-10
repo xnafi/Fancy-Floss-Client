@@ -52,7 +52,6 @@ const SignUp = () => {
                     })
                         .then(res => res.json())
                         .then(data => {
-                            console.log(data);
                             localStorage.setItem('jwt-token', data.token)
                             navigate(from, { replace: true })
 
@@ -66,7 +65,6 @@ const SignUp = () => {
             })
             .catch(error => {
                 const msg = error.message
-                console.log(error);
                 Swal.fire(msg)
             })
     }
@@ -88,7 +86,6 @@ const SignUp = () => {
                     })
                         .then(res => res.json())
                         .then(data => {
-                            console.log(data);
                             localStorage.setItem('jwt-token', data.token)
                             navigate(from, { replace: true })
 

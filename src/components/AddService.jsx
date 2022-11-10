@@ -6,7 +6,7 @@ const AddService = () => {
   document.title = "Add services"
 
   const submitHandle = (e) => {
-    console.log(services);
+
     fetch("https://dentus-server-side.vercel.app/services", {
       method: "POST",
       headers: {

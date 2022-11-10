@@ -10,6 +10,7 @@ const MyReviews = () => {
     const [comments, setComments] = useState([])
     const [change, setChange] = useState()
     const [loading, setLoading] = useState(true)
+    const [close, setClose] = useState(false)
     useEffect(() => {
         fetch(`https://dentus-server-side.vercel.app/myreviews?email=${user?.email}`, {
             headers: {
@@ -27,7 +28,6 @@ const MyReviews = () => {
                 setComments(data)
             })
     }, [loading, user?.email])
-    console.log(localStorage.getItem('jwt-token'));
     const handleDelete = (id) => {
         const confirm = window.confirm('Do You Want To Delete This?')
         if (confirm) {
@@ -54,6 +54,8 @@ const MyReviews = () => {
             .then(data => {
                 if (data.modifiedCount > 0) {
                     setLoading(!loading)
+                    setClose(false)
+                    Swal.fire('Your comment updated')
                 }
 
                 console.log(data);
@@ -65,55 +67,65 @@ const MyReviews = () => {
     }
 
     return (
+        <>
+            <h1 className='text-5xl font-bold text-center my-20'>{comments.length === 0 ? '' : 'My Reviews'}</h1>
 
-        < div className="overflow-x-auto h-screen w-screen z-0" >
-            <h1 className='text-5xl font-bold text-center my-20'>My Reviews</h1>
-            <table className="table table-zebra w-full mx-auto">
-                {/* <!-- head --> */}
-                <thead>
-                    <tr>
-                        <th>SL/Num</th>
-                        <th>Service Name</th>
-                        <th>Comment</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {/* <!-- row 1 --> */}
-                    {
-                        comments.map((comment, index) => <MyReviewTable key={comment._id} comment={comment} index={index} handleDelete={handleDelete} setChange={setChange} />)
-                    }
-                </tbody>
-            </table>
-            {/* The button to open modal */}
+            {
+                comments.length === 0 ? <h1 className='text-5xl font-bold text-center my-20'>No reviews found</h1> : <table className="table table-zebra w-full mx-auto">
+                    {/* <!-- head --> */}
+                    <thead>
+                        <tr>
+                            <th>SL/Num</th>
+                            <th>Service Name</th>
+                            <th>Comment</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+
+                        {
+                            comments.map((comment, index) => <MyReviewTable key={comment._id} comment={comment} index={index} setClose={setClose} handleDelete={handleDelete} setChange={setChange} />)
+                        }
+
+                    </tbody>
+                </table>
+            }
+            < div className="overflow-x-auto h-screen w-screen z-0" >
 
 
-            {/* Put this part before </body> tag */}
-            <div>
-                <input type="checkbox" id="my-modal-3" className="modal-toggle" />
-                <div className="modal">
-                    <div className="modal-box relative">
-                        <label htmlFor="my-modal-3" className="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
-                        <div>
-                            <h4 className='text-center font-semibold text-4xl my-3'>Update Review</h4>
-                            <div className="w-full mx-auto">
-                                <form onSubmit={updateHandler} className="card-body">
-                                    <div className="form-control">
-                                        <label className="label" htmlFor='name'>
-                                            <span className="label-text">Comments : </span>
-                                        </label>
-                                        <textarea onChange={editHandle} name="textarea" value={change?.comment} placeholder='write your comments here : ' className='h-[150px] border-2 p-3 resize-none rounded-lg'></textarea>
+                {/* The button to open modal */}
+
+
+                {/* Put this part before </body> tag */}
+                {
+                    close && <div>
+                        <input type="checkbox" id="my-modal-3" className="modal-toggle" />
+                        <div className="modal">
+                            <div className="modal-box relative">
+                                <label htmlFor="my-modal-3" className="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
+                                <div>
+                                    <h4 className='text-center font-semibold text-4xl my-3'>Update Review</h4>
+                                    <div className="w-full mx-auto">
+                                        <form onSubmit={updateHandler} className="card-body">
+                                            <div className="form-control">
+                                                <label className="label" htmlFor='name'>
+                                                    <span className="label-text">Comments : </span>
+                                                </label>
+                                                <textarea onChange={editHandle} name="textarea" value={change?.comment} placeholder='write your comments here : ' className='h-[150px] border-2 p-3 resize-none rounded-lg'></textarea>
+                                            </div>
+                                            <div className="form-control mt-6">
+                                                <button type='submit' className="btn btn-primary">Update review</button>
+                                            </div>
+                                        </form>
                                     </div>
-                                    <div className="form-control mt-6">
-                                        <button type='submit' className="btn btn-primary">Update review</button>
-                                    </div>
-                                </form>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-        </ div>
+                }
+            </ div>
+        </>
     )
 }
 
