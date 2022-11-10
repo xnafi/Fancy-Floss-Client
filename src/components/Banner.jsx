@@ -1,7 +1,9 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import bannerImg from '../assets/bannerImg.png'
+import useTitle from '../Hooks/useTitle'
 const Banner = () => {
+    useTitle('Home')
     return (
         <div className="flex flex-col justify-center mx-auto sm:py-12 lg:py-24 lg:flex-row lg:justify-between bg-[#15269C] px-10 text-white py-5">
             <div className="flex flex-col justify-center text-center rounded-sm lg:max-w-md xl:max-w-lg lg:text-left">

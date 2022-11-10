@@ -3,6 +3,7 @@ import React, { useContext } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import Swal from 'sweetalert2'
 import { AuthContext } from '../authcontext/AutProvider'
+import useTitle from '../Hooks/useTitle'
 
 const Login = () => {
     const navigate = useNavigate()
@@ -10,6 +11,7 @@ const Login = () => {
     const provider = new GoogleAuthProvider()
     const from = location.state?.from?.pathname || '/'
     const { loginWithEmail, signInWithGoogle } = useContext(AuthContext)
+    useTitle('Login')
     const handleLogin = (e) => {
         e.preventDefault()
         const form = e.target

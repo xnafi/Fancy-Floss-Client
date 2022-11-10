@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
+import useTitle from '../Hooks/useTitle'
 
 const ServicesHome = () => {
     const [service, setServices] = useState([])
@@ -10,6 +11,8 @@ const ServicesHome = () => {
                 setServices(data)
             })
     }, [])
+    useTitle('home')
+
 
     return (
         <section className="py-6 sm:py-12 dark:bg-gray-800 dark:text-gray-100 md:px-10 px-2">

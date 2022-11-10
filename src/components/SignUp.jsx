@@ -3,12 +3,13 @@ import React, { useContext, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { AuthContext } from '../authcontext/AutProvider'
 import Swal from 'sweetalert2'
+import useTitle from '../Hooks/useTitle'
 
 const SignUp = () => {
     const [error, setError] = useState()
     const { createUserWithEmail, signInWithGoogle, setUserName } = useContext(AuthContext)
     const provider = new GoogleAuthProvider()
-
+    useTitle('Sign up')
     const handleSubmit = (event) => {
         event.preventDefault()
         const form = event.target

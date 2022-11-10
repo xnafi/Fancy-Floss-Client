@@ -1,8 +1,17 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { Link } from 'react-router-dom'
+import Swal from 'sweetalert2'
 import logo from '../assets/dental-icon.png'
+import { AuthContext } from '../authcontext/AutProvider'
 const NavBar = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false)
+    const { user, logOut } = useContext(AuthContext);
+    const logoutUser = () => {
+        logOut()
+            .then(res => {
+                Swal.fire('user logout')
+            })
+    }
     return (
         <div className='px-4 py-5 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8'>
             <div className='relative flex items-center justify-between'>
@@ -68,6 +77,38 @@ const NavBar = () => {
                             Contact Us
                         </Link>
                     </li>
+
+                    {
+                        user ?
+                            <Link
+                                onClick={logoutUser}
+                                to='/'
+                                aria-label='Logout'
+                                title='Logout'
+                                className='font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400'
+                            >
+                                Log out
+                            </Link> :
+                            <>
+                                <Link
+                                    to='/login'
+                                    aria-label='Login'
+                                    title='Login'
+                                    className='font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400'
+                                >
+                                    Login
+                                </Link>
+                                <Link
+                                    to='/signup'
+                                    aria-label='signup'
+                                    title='signup'
+                                    className='font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400'
+                                >
+                                    Sign Up
+                                </Link>
+                            </>
+                    }
+
                 </ul>
                 <div className='lg:hidden'>
                     <button
@@ -176,6 +217,44 @@ const NavBar = () => {
                                                 Contact Us
                                             </Link>
                                         </li>
+
+                                        {
+                                            user ?
+                                                <>
+                                                    <br />
+                                                    <Link
+                                                        onClick={logoutUser}
+                                                        to='/'
+                                                        aria-label='Logout'
+                                                        title='Logout'
+                                                        className='font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400'
+                                                    >
+                                                        Log out
+                                                    </Link>
+                                                </>
+                                                :
+                                                <>
+                                                    <br />
+                                                    <Link
+                                                        to='/login'
+                                                        aria-label='Login'
+                                                        title='Login'
+                                                        className='font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400'
+                                                    >
+                                                        Login
+                                                    </Link>
+                                                    <br />
+                                                    <br />
+                                                    <Link
+                                                        to='/signup'
+                                                        aria-label='signup'
+                                                        title='signup'
+                                                        className='font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400'
+                                                    >
+                                                        Sign Up
+                                                    </Link>
+                                                </>
+                                        }
                                     </ul>
                                 </nav>
                             </div>
