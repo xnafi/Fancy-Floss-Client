@@ -66,8 +66,9 @@ const MyReviews = () => {
 
     return (
 
-        < div className="overflow-x-auto" >
-            <table className="table table-zebra w-full">
+        < div className="overflow-x-auto h-screen w-screen z-0" >
+            <h1 className='text-5xl font-bold text-center my-20'>My Reviews</h1>
+            <table className="table table-zebra w-full mx-auto">
                 {/* <!-- head --> */}
                 <thead>
                     <tr>

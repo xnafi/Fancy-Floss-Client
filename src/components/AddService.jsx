@@ -38,7 +38,7 @@ const AddService = () => {
         <form onSubmit={submitHandle} className="card-body ">
           <div className="form-control">
             <label className="label" htmlFor='name'>
-              <span className="label-text">Service Name : </span>
+              <span className="label-text">Service Name </span>
             </label>
             <input type="text" onBlur={addProductHandle} defaultValue={services?.title} placeholder="Service name : " name='name' className="input input-bordered" required />
           </div>
@@ -46,23 +46,23 @@ const AddService = () => {
           <div className='flex flex-col md:flex-row justify-between gap-6'>
             <div className="form-control w-full">
               <label className="label" htmlFor='Services Price'>
-                <span className="label-text">Services Price: </span>
+                <span className="label-text">Service Price</span>
               </label>
               <input type="number" onBlur={addProductHandle} defaultValue={services?.Name} placeholder="Services price" name='price' className="input input-bordered" required />
             </div>
             <div className="form-control w-full">
               <label className="label" htmlFor='Service Icon'>
-                <span className="label-text">Service Icon : </span>
+                <span className="label-text">Service Icon  </span>
               </label>
-              <input type="text" onBlur={addProductHandle} defaultValue={services?.Icon} placeholder="image" name='image' className="input input-bordered" required />
+              <input type="text" onBlur={addProductHandle} defaultValue={services?.Icon} placeholder="Service Icon" name='image' className="input input-bordered" required />
             </div>
 
           </div>
           <div className="form-control">
             <label className="label" htmlFor='Services Photo URL'>
-              <span className="label-text">Services Photo URL : </span>
+              <span className="label-text">Service Photo URL : </span>
             </label>
-            <input type="text" onBlur={addProductHandle} defaultValue={services?.photo} placeholder="services photo url" name='image_1' className="input input-bordered" required />
+            <input type="text" onBlur={addProductHandle} defaultValue={services?.photo} placeholder="service photo url" name='image_1' className="input input-bordered" required />
           </div>
           <div className="form-control">
             <label className="label" htmlFor='photo'>

@@ -1,14 +1,16 @@
 import { GoogleAuthProvider } from 'firebase/auth'
 import React, { useContext, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { AuthContext } from '../authcontext/AutProvider'
 import Swal from 'sweetalert2'
 import useTitle from '../Hooks/useTitle'
 
 const SignUp = () => {
-    const [error, setError] = useState()
     const { createUserWithEmail, signInWithGoogle, setUserName } = useContext(AuthContext)
     const provider = new GoogleAuthProvider()
+    const navigate = useNavigate()
+    const location = useLocation()
+    const from = location.state?.from?.pathname || '/'
     useTitle('Sign up')
     const handleSubmit = (event) => {
         event.preventDefault()
@@ -20,10 +22,29 @@ const SignUp = () => {
 
         createUserWithEmail(email, password)
             .then(res => {
-                const user = res.user
-                console.log(user);
-                setUserName(name, photoUrl)
+
+                const email = res.user?.email
+                const currentUser = {
+                    email: email
+                }
+                if (email) {
+                    fetch('http://localhost:5000/jwt', {
+                        method: 'POST',
+                        headers: { 'content-type': 'application/json' },
+                        body: JSON.stringify(currentUser)
+                    })
+                        .then(res => res.json())
+                        .then(data => {
+                            console.log(data);
+                            localStorage.setItem('jwt-token', data.token)
+                            navigate(from, { replace: true })
+
+                        })
+                        .catch(er => console.log(er))
+
+                }
                 Swal.fire('register succeed')
+                setUserName(name, photoUrl)
                 form.reset()
             })
             .catch(error => {
@@ -35,8 +56,32 @@ const SignUp = () => {
 
     const loginWithGoogle = () => {
         signInWithGoogle(provider)
-            .then(() => {
+            .then(res => {
+                const email = res.user?.email
+                console.log("🚀 ~ file: SignUp.jsx ~ line 29 ~ handleSubmit ~ user", email)
+
+                const currentUser = {
+                    email: email
+                }
+                if (email) {
+                    fetch('http://localhost:5000/jwt', {
+                        method: 'POST',
+                        headers: { 'content-type': 'application/json' },
+                        body: JSON.stringify(currentUser)
+                    })
+                        .then(res => res.json())
+                        .then(data => {
+                            console.log(data);
+                            localStorage.setItem('jwt-token', data.token)
+                            navigate(from, { replace: true })
+
+                        })
+                        .catch(er => console.log(er))
+
+                }
                 Swal.fire('welcome back')
+
+
             })
     }
     return (

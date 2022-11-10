@@ -46,7 +46,6 @@ const UserComentAndReviews = ({ id }) => {
 
     }
 
-    console.log("🚀 ~ file: UserComentAndReviews.jsx ~ line 8 ~ UserComentAndReviews ~ reviews", reviews)
 
     return (
         <>
@@ -102,7 +101,7 @@ const UserComentAndReviews = ({ id }) => {
             {/************* * reviews ************** */}
             {
                 reviews.map(review =>
-                    <div key={review._id} className="container flex flex-col w-full max-w-lg p-6 mx-auto divide-y rounded-md divide-gray-700 dark:bg-gray-900 dark:text-gray-100">
+                    <div key={review._id} className="container  bg-gray-400 text-white flex flex-col w-full max-w-lg p-6 mx-auto mb-10 px-2 divide-y rounded-md divide-gray-700 dark:bg-gray-900 dark:text-gray-100">
                         <div className="flex justify-between p-4">
                             <div className="flex space-x-4">
                                 <div>
