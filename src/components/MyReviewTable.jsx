@@ -1,28 +1,31 @@
 import React, { useEffect, useState } from 'react'
+import { FaPenAlt, FaTrashAlt } from 'react-icons/fa'
 
-const MyReviewTable = ({ comment, index }) => {
+const MyReviewTable = ({ comment, index, handleDelete, setChange
+}) => {
     const [service, setService] = useState(null)
-    
 
-    const { textarea, servicesId } = comment
+
+    const { textarea, servicesId, _id } = comment
     useEffect(() => {
         fetch(`http://localhost:5000/service/${servicesId}`)
             .then(res => res.json())
             .then(data => {
-                console.log(data);
                 setService(data)
             })
     }, [])
-    console.log("🚀 ~ file: MyReviewTable.jsx ~ line 5 ~ MyReviewTable ~ service", service)
 
     return (
         <tr>
             <th>{index + 1}</th>
-            <td>{service.name}</td>
+            <td>{service?.name}</td>
             <td>{textarea}</td>
-            <td></td>
+
+            <td className='flex gap-x-4'><button onClick={() => handleDelete(_id)}><FaTrashAlt /></button> <label htmlFor="my-modal-3" className="" onClick={() => setChange(comment)} ><FaPenAlt className=' text-xl cursor-pointer text-info' /></label> </td>
+
         </tr>
     )
 }
 
 export default MyReviewTable
+{/* <label htmlFor="my-modal" onClick={()=>setChange(comment)}><FaPenAlt /></label> */ }
