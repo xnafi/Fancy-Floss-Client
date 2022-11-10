@@ -40,7 +40,7 @@ const AddService = () => {
             <label className="label" htmlFor='name'>
               <span className="label-text">Service Name </span>
             </label>
-            <input type="text" onBlur={addProductHandle} defaultValue={services?.title} placeholder="Service name : " name='name' className="input input-bordered" required />
+            <input type="text" onBlur={addProductHandle} defaultValue={services?.title} placeholder="Service name" name='name' className="input input-bordered" required />
           </div>
 
           <div className='flex flex-col md:flex-row justify-between gap-6'>

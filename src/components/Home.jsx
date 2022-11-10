@@ -1,5 +1,6 @@
 import React from 'react'
 import useTitle from '../Hooks/useTitle'
+import AboutMe from './AboutMe'
 import Appoinment from './Appoinment'
 
 import Banner from './Banner'
@@ -10,8 +11,9 @@ const Home = () => {
   return (
     <>
       <Banner />
-      <ServicesHome/>
-      <Appoinment/>
+      <ServicesHome />
+      <Appoinment />
+      <AboutMe />
     </>
   )
 }
