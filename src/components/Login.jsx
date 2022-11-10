@@ -6,11 +6,11 @@ import { AuthContext } from '../authcontext/AutProvider'
 import useTitle from '../Hooks/useTitle'
 
 const Login = () => {
+    const provider = new GoogleAuthProvider()
+    const { loginWithEmail, signInWithGoogle } = useContext(AuthContext)
     const navigate = useNavigate()
     const location = useLocation()
-    const provider = new GoogleAuthProvider()
     const from = location.state?.from?.pathname || '/'
-    const { loginWithEmail, signInWithGoogle } = useContext(AuthContext)
     useTitle('Login')
     const handleLogin = (e) => {
         e.preventDefault()
@@ -27,7 +27,7 @@ const Login = () => {
                     email: user
                 }
                 if (user) {
-                    fetch('http://localhost:5000/jwt', {
+                    fetch('https://dentus-server-side.vercel.app/jwt', {
                         method: 'POST',
                         headers: { 'content-type': 'application/json' },
                         body: JSON.stringify(currentUser)
@@ -36,10 +36,10 @@ const Login = () => {
                         .then(data => {
                             console.log(data);
                             localStorage.setItem('jwt-token', data.token)
+                            navigate(from, { replace: true })
                         })
                         .catch(er => console.log(er))
                 }
-                navigate(from, { replace: true })
             })
             .catch(er => {
                 console.error(er)

@@ -5,7 +5,7 @@ import useTitle from '../Hooks/useTitle'
 const ServicesHome = () => {
     const [service, setServices] = useState([])
     useEffect(() => {
-        fetch('http://localhost:5000/services')
+        fetch('https://dentus-server-side.vercel.app/services')
             .then(res => res.json())
             .then(data => {
                 setServices(data)

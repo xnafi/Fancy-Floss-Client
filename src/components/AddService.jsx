@@ -7,7 +7,7 @@ const AddService = () => {
 
   const submitHandle = (e) => {
     console.log(services);
-    fetch("http://localhost:5000/services", {
+    fetch("https://dentus-server-side.vercel.app/services", {
       method: "POST",
       headers: {
         "content-type": "application/json"

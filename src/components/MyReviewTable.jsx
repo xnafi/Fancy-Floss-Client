@@ -8,7 +8,7 @@ const MyReviewTable = ({ comment, index, handleDelete, setChange
 
     const { textarea, servicesId, _id } = comment
     useEffect(() => {
-        fetch(`http://localhost:5000/service/${servicesId}`)
+        fetch(`https://dentus-server-side.vercel.app/service/${servicesId}`)
             .then(res => res.json())
             .then(data => {
                 setService(data)

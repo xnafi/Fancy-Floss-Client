@@ -11,7 +11,7 @@ const MyReviews = () => {
     const [change, setChange] = useState()
     const [loading, setLoading] = useState(true)
     useEffect(() => {
-        fetch(`http://localhost:5000/myreviews?email=${user?.email}`, {
+        fetch(`https://dentus-server-side.vercel.app/myreviews?email=${user?.email}`, {
             headers: {
                 authorization: ` Bearer ${localStorage.getItem('jwt-token')}`
             }
@@ -31,7 +31,7 @@ const MyReviews = () => {
     const handleDelete = (id) => {
         const confirm = window.confirm('Do You Want To Delete This?')
         if (confirm) {
-            fetch(`http://localhost:5000/deletereview/${id}`, {
+            fetch(`https://dentus-server-side.vercel.app/deletereview/${id}`, {
                 method: "delete"
             })
                 .then(res => res.json())
@@ -45,7 +45,7 @@ const MyReviews = () => {
     }
     const updateHandler = (e) => {
         e.preventDefault()
-        fetch(`http://localhost:5000/updatereview/${change?._id}`, {
+        fetch(`https://dentus-server-side.vercel.app/updatereview/${change?._id}`, {
             method: 'put',
             headers: { 'content-type': 'application/json' },
             body: JSON.stringify(change)

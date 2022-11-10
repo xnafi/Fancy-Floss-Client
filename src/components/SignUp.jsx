@@ -6,6 +6,7 @@ import Swal from 'sweetalert2'
 import useTitle from '../Hooks/useTitle'
 
 const SignUp = () => {
+    const [error, setError] = useState()
     const { createUserWithEmail, signInWithGoogle, setUserName } = useContext(AuthContext)
     const provider = new GoogleAuthProvider()
     const navigate = useNavigate()
@@ -20,15 +21,31 @@ const SignUp = () => {
         const photoUrl = form.photoUrl.value
         const password = form.password.value
 
+        if (!/^\S+@\S+\.\S+$/.test(email)) {
+            return setError('please enter a valid email')
+        }
+        if (!/(?=.*?[A-Z])/.test(password)) {
+            return setError('add at least one upper case in password')
+        }
+        if (!/(?=.*?[a-z])/.test(password)) {
+            return setError('add at least one lower case in password')
+        }
+        if (!/(?=.*?[#?!@$%^&*-])/.test(password)) {
+            return setError('add at least one special character in password')
+        }
+        if (!/.{8,}/.test(password)) {
+            return setError('password 8 character or more in password')
+        }
+
         createUserWithEmail(email, password)
             .then(res => {
-
+                setError('')
                 const email = res.user?.email
                 const currentUser = {
                     email: email
                 }
                 if (email) {
-                    fetch('http://localhost:5000/jwt', {
+                    fetch('https://dentus-server-side.vercel.app/jwt', {
                         method: 'POST',
                         headers: { 'content-type': 'application/json' },
                         body: JSON.stringify(currentUser)
@@ -64,7 +81,7 @@ const SignUp = () => {
                     email: email
                 }
                 if (email) {
-                    fetch('http://localhost:5000/jwt', {
+                    fetch('https://dentus-server-side.vercel.app/jwt', {
                         method: 'POST',
                         headers: { 'content-type': 'application/json' },
                         body: JSON.stringify(currentUser)
@@ -85,6 +102,7 @@ const SignUp = () => {
             })
     }
     return (
+
         <section className=" dark:bg-gray-900 my-10">
             <div className="lg:w-1/3 py-6 rounded-md md:w-1/2 w-full bg-black text-white flex items-center justify-center min-h-screen px-6 mx-auto">
                 <form onSubmit={handleSubmit} className="w-full max-w-md">
@@ -92,6 +110,9 @@ const SignUp = () => {
                         <a href="#" className="w-1/3 pb-4 font-medium text-center text-white capitalize border-b-2 border-blue-500 dark:border-blue-400 dark:text-white">
                             sign up
                         </a>
+                    </div>
+                    <div className='flex flex-col justify-center items-center text-center'>
+                        <small className='font-bold text-red-900 my-4 text-center animate-pulse text-lg'>{error}</small>
                     </div>
 
                     <div className="relative flex items-center mt-8">
@@ -166,6 +187,7 @@ const SignUp = () => {
                 </form>
             </div>
         </section>
+
     )
 }
 

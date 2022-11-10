@@ -10,7 +10,7 @@ const UserComentAndReviews = ({ id }) => {
 
 
     useEffect(() => {
-        fetch(`http://localhost:5000/reviews?id=${id}`)
+        fetch(`https://dentus-server-side.vercel.app/reviews?id=${id}`)
             .then(res => res.json())
             .then(data => {
                 setreviews(data)
@@ -32,7 +32,7 @@ const UserComentAndReviews = ({ id }) => {
 
         }
 
-        fetch('http://localhost:5000/reviews', {
+        fetch('https://dentus-server-side.vercel.app/reviews', {
             method: 'post',
             headers: { 'content-type': 'application/json' },
             body: JSON.stringify(usersInfo)

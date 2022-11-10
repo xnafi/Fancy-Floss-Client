@@ -33,7 +33,7 @@ export const routes = createBrowserRouter([
             {
                 path: '/services',
                 element: <Services />,
-                loader: () => fetch('http://localhost:5000/services')
+                loader: () => fetch('https://dentus-server-side.vercel.app/services')
             },
             {
                 path: '/faq',
@@ -61,7 +61,7 @@ export const routes = createBrowserRouter([
             {
                 path: '/service/:id',
                 element: <Service />,
-                loader: ({ params }) => fetch(`http://localhost:5000/service/${params.id}`)
+                loader: ({ params }) => fetch(`https://dentus-server-side.vercel.app/service/${params.id}`)
             }
         ]
     }
