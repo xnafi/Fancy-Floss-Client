@@ -1,21 +1,33 @@
 import React, { useContext, useEffect, useState } from 'react'
 import Swal from 'sweetalert2'
 import { AuthContext } from '../authcontext/AutProvider'
+import useTitle from '../Hooks/useTitle'
 import MyReviewTable from './MyReviewTable'
 
 const MyReviews = () => {
-    const { user } = useContext(AuthContext)
+    useTitle('My Review')
+    const { user, logOut } = useContext(AuthContext)
     const [comments, setComments] = useState([])
     const [change, setChange] = useState()
     const [loading, setLoading] = useState(true)
-    const [close, setClose] = useState(false)
     useEffect(() => {
-        fetch(`http://localhost:5000/myreviews?email=${user?.email}`)
-            .then(res => res.json())
+        fetch(`http://localhost:5000/myreviews?email=${user?.email}`, {
+            headers: {
+                authorization: ` Bearer ${localStorage.getItem('jwt-token')}`
+            }
+        })
+            .then(res => {
+                if (res.status === 403 || res.status === 401) {
+                    Swal.fire("user email not Found")
+                    return logOut()
+                }
+                return res.json()
+            })
             .then(data => {
                 setComments(data)
             })
-    }, [loading])
+    }, [loading, user?.email])
+    console.log(localStorage.getItem('jwt-token'));
     const handleDelete = (id) => {
         const confirm = window.confirm('Do You Want To Delete This?')
         if (confirm) {

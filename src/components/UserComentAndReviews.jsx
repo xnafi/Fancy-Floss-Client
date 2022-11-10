@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { AuthContext } from '../authcontext/AutProvider'
 import { FaUserAlt } from "react-icons/fa";
+import Swal from 'sweetalert2';
 
 const UserComentAndReviews = ({ id }) => {
     const { user } = useContext(AuthContext)
@@ -38,7 +39,9 @@ const UserComentAndReviews = ({ id }) => {
         })
             .then(res => res.json())
             .then(data => {
+                Swal.fire('Comment added')
                 setReload(!reload)
+                form.reset()
             })
 
     }

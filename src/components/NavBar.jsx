@@ -39,12 +39,12 @@ const NavBar = () => {
                     </li>
                     <li>
                         <Link
-                            to='/about'
-                            aria-label='About'
-                            title='About'
+                            to='/blog'
+                            aria-label='Blog'
+                            title='Blog'
                             className='font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400'
                         >
-                            About
+                            Blog
                         </Link>
                     </li>
                     <li>
@@ -67,28 +67,38 @@ const NavBar = () => {
                             FAQ
                         </Link>
                     </li>
-                    <li>
-                        <Link
-                            to='/contact'
-                            aria-label='Contact Us'
-                            title='Contact Us'
-                            className='font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400'
-                        >
-                            Contact Us
-                        </Link>
-                    </li>
 
                     {
                         user ?
-                            <Link
-                                onClick={logoutUser}
-                                to='/'
-                                aria-label='Logout'
-                                title='Logout'
-                                className='font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400'
-                            >
-                                Log out
-                            </Link> :
+                            <>
+                                <Link
+                                    to='/reviews'
+                                    aria-label='reviews'
+                                    title='reviews'
+                                    className='font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400'
+                                >
+                                    My Review
+                                </Link>
+
+                                <Link
+                                    to='/addservice'
+                                    aria-label='Add service'
+                                    title='Add service'
+                                    className='font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400'
+                                >
+                                    Add Service
+                                </Link>
+                                <Link
+                                    onClick={logoutUser}
+                                    to='/'
+                                    aria-label='Logout'
+                                    title='Logout'
+                                    className='font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400'
+                                >
+                                    Log out
+                                </Link>
+                            </>
+                            :
                             <>
                                 <Link
                                     to='/login'
@@ -179,12 +189,12 @@ const NavBar = () => {
                                         </li>
                                         <li>
                                             <Link
-                                                to='/about'
-                                                aria-label='About'
-                                                title='About'
+                                                to='/blog'
+                                                aria-label='Blog'
+                                                title='Blog'
                                                 className='font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400'
                                             >
-                                                About
+                                                Blog
                                             </Link>
                                         </li>
                                         <li>
@@ -207,20 +217,28 @@ const NavBar = () => {
                                                 FAQ
                                             </Link>
                                         </li>
-                                        <li>
-                                            <Link
-                                                to='/contact'
-                                                aria-label='Contact Us'
-                                                title='Contact Us'
-                                                className='font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400'
-                                            >
-                                                Contact Us
-                                            </Link>
-                                        </li>
+
 
                                         {
                                             user ?
-                                                <>
+                                                <div className='flex flex-col'>
+                                                    <Link
+                                                        to='/reviews'
+                                                        aria-label='reviews'
+                                                        title='reviews'
+                                                        className='font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400'
+                                                    >
+                                                        My Review
+                                                    </Link>
+                                                    <br />
+                                                    <Link
+                                                        to='/addservice'
+                                                        aria-label='Add service'
+                                                        title='Add service'
+                                                        className='font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400'
+                                                    >
+                                                        Add Service
+                                                    </Link>
                                                     <br />
                                                     <Link
                                                         onClick={logoutUser}
@@ -231,7 +249,7 @@ const NavBar = () => {
                                                     >
                                                         Log out
                                                     </Link>
-                                                </>
+                                                </div>
                                                 :
                                                 <>
                                                     <br />

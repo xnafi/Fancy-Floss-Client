@@ -7,7 +7,7 @@ const AddService = () => {
 
   const submitHandle = (e) => {
     console.log(services);
-    fetch("", {
+    fetch("http://localhost:5000/services", {
       method: "POST",
       headers: {
         "content-type": "application/json"
@@ -54,7 +54,7 @@ const AddService = () => {
               <label className="label" htmlFor='Service Icon'>
                 <span className="label-text">Service Icon : </span>
               </label>
-              <input type="text" onBlur={addProductHandle} defaultValue={services?.Icon} placeholder="image" name='Service_Icon' className="input input-bordered" required />
+              <input type="text" onBlur={addProductHandle} defaultValue={services?.Icon} placeholder="image" name='image' className="input input-bordered" required />
             </div>
 
           </div>

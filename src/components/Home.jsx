@@ -1,10 +1,12 @@
 import React from 'react'
+import useTitle from '../Hooks/useTitle'
 import Appoinment from './Appoinment'
 
 import Banner from './Banner'
 import ServicesHome from './ServicesHome'
 
 const Home = () => {
+  useTitle('Home')
   return (
     <>
       <Banner />

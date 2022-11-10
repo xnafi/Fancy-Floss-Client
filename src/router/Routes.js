@@ -1,7 +1,5 @@
 import { createBrowserRouter } from 'react-router-dom'
-import About from '../components/About'
 import AddService from '../components/AddService'
-import Contact from '../components/Contact'
 import ErrorPage from '../components/EroorPage'
 import Faq from '../components/Faq'
 import Home from '../components/Home'
@@ -12,6 +10,7 @@ import Services from '../components/Services'
 import SignUp from '../components/SignUp'
 import Main from '../main/Main'
 import PrivateRouter from './PrivateRoutes'
+import Blog from '../components/Blog'
 
 export const routes = createBrowserRouter([
     {
@@ -28,17 +27,13 @@ export const routes = createBrowserRouter([
                 element: <Home />
             },
             {
-                path: '/about',
-                element: <About />
+                path: '/blog',
+                element: <Blog />
             },
             {
                 path: '/services',
                 element: <Services />,
                 loader: () => fetch('http://localhost:5000/services')
-            },
-            {
-                path: '/contact',
-                element: <Contact />
             },
             {
                 path: '/faq',
@@ -54,7 +49,7 @@ export const routes = createBrowserRouter([
             }
             ,
             {
-                path: '/myreviews',
+                path: '/reviews',
                 element: <PrivateRouter><MyReviews /></PrivateRouter>
             }
             ,

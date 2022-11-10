@@ -17,11 +17,28 @@ const Login = () => {
         const form = e.target
         const email = form.email.value
         const password = form.password.value
-     
+
         loginWithEmail(email, password)
-            .then(() => {
+            .then(result => {
                 Swal.fire(`Welcome`)
                 form.reset()
+                const user = result.user.email
+                const currentUser = {
+                    email: user
+                }
+                if (user) {
+                    fetch('http://localhost:5000/jwt', {
+                        method: 'POST',
+                        headers: { 'content-type': 'application/json' },
+                        body: JSON.stringify(currentUser)
+                    })
+                        .then(res => res.json())
+                        .then(data => {
+                            console.log(data);
+                            localStorage.setItem('jwt-token', data.token)
+                        })
+                        .catch(er => console.log(er))
+                }
                 navigate(from, { replace: true })
             })
             .catch(er => {
